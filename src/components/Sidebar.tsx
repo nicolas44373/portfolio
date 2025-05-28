@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react'
-import { Home, User, FileText, Book, Server, Mail, Menu, X } from 'lucide-react'
+import { Home, User, FileText, Server, Mail, Menu, X } from 'lucide-react'
 import { useTheme } from 'next-themes'
 
 const Sidebar = () => {

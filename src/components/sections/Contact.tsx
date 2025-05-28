@@ -30,44 +30,48 @@ const Contact = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
+  e.preventDefault();
+  setIsLoading(true);
 
-    try {
-        const response = await emailjs.send(
-            'Portfolio-Contact',
-            'template_czatkd1',
-            {
-              from_name: formData.nombre,
-              reply_to: formData.correo,
-              subject: formData.asunto,
-              message: formData.mensaje,
-            },
-            '0M277pAq9VZnYfBbu'
-          );
+  try {
+    const response = await emailjs.send(
+      'service_i7fezvc',
+      'template_k0ehumc',
+      {
+        from_name: formData.nombre,
+        reply_to: formData.correo,
+        subject: formData.asunto,
+        message: formData.mensaje,
+      },
+      'SmqpKD1OzDuhGaLVw'
+    );
 
-          if (response.status === 200) {
-        toast({
-          title: t('contact.form.success.title'),
-          description: t('contact.form.success.description'),
-        });
-        setFormData({
-          nombre: '',
-          correo: '',
-          asunto: '',
-          mensaje: ''
-        });
-      } else {
-        throw new Error('Error al enviar el mensaje');
-      }
-    } catch {
+    if (response.status === 200) {
       toast({
-        variant: "destructive",
-        title: t('contact.form.error.title'),
-        description: t('contact.form.error.description'),
+        title: t('contact.form.success.title'),
+        description: t('contact.form.success.description'),
       });
+      setFormData({
+        nombre: '',
+        correo: '',
+        asunto: '',
+        mensaje: ''
+      });
+    } else {
+      throw new Error('Error al enviar el mensaje');
     }
+  } catch {
+    toast({
+      variant: "destructive",
+      title: t('contact.form.error.title'),
+      description: t('contact.form.error.description'),
+    });
+  } finally {
+    // ✅ Esto asegura que se reactive el botón en cualquier caso
+    setIsLoading(false);
   }
+};
+
   
   const contactInfo = [
     {

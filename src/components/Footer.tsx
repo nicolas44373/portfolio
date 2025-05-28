@@ -40,15 +40,14 @@ const Footer = () => {
             </a>
           </Button>
 
-          <Button variant="ghost" size="icon">
-            <a
-              href="mailto:nicolasalurralde39@gmail.com"
-              className="text-muted-foreground hover:text-foreground"
-            >
-              <Mail className="h-5 w-5" />
-              <span className="sr-only">Email</span>
-            </a>
-          </Button>
+          <a
+  href="mailto:nicolasalurralde39@gmail.com"
+  className="text-muted-foreground hover:text-foreground inline-flex items-center justify-center rounded-md p-2 transition-colors"
+>
+  <Mail className="h-5 w-5" />
+  <span className="sr-only">Email</span>
+</a>
+
         </div>
       </div>
     </footer>

@@ -82,7 +82,7 @@ export async function generateMetadata(
     ],
     openGraph: {
       type: 'website',
-      url: 'https://portfolio-bonacossa.vercel.app/',
+      url: 'https://portfolio-git-main-nicolasprogram.vercel.app/',
       title: dict.title,
       description: dict.description,
       siteName: dict.title,
