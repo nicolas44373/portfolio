@@ -90,7 +90,7 @@ export async function generateMetadata(
       alternateLocale: params.lang === 'es' ? 'en' : 'es',
       images: [
         {
-          url: '/og-image.png',
+          url: '/nicoo.jpg',
           width: 1200,
           height: 630,
           alt: dict.ogImageAlt,
