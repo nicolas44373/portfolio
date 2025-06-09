@@ -38,20 +38,7 @@ const About = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Imagen */}
-          <div className="space-y-8">
-            <div className="relative group">
-              <div className="aspect-square rounded-2xl overflow-hidden">
-              <Image
-                src="/alurralde/nico.jpg"
-                alt="Nicolas Alurralde"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                width={1920}    // Dimensión más apropiada para una foto de perfil
-                height={2560}   // Manteniendo el aspect ratio cuadrado
-              />
-              </div>
-            </div>
-          </div>
+          
 
           {/* Descripción */}
           <div className="space-y-10">
