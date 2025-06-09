@@ -3,6 +3,15 @@ import React, { useState, useEffect } from 'react'
 import { Home, User, FileText, Server, Mail, Menu, X } from 'lucide-react'
 import { useTheme } from 'next-themes'
 
+// ✅ Mover esta constante arriba
+const navItems = [
+  { name: 'Inicio', icon: Home, id: 'home' },
+  { name: 'Sobre mí', icon: User, id: 'about' },
+  { name: 'Tecnologías', icon: Server, id: 'tech' },
+  { name: 'Proyectos', icon: FileText, id: 'projects' },
+  { name: 'Contacto', icon: Mail, id: 'contact' }
+]
+
 const Sidebar = () => {
   const [activeSection, setActiveSection] = useState('home')
   const [mounted, setMounted] = useState(false)
@@ -16,11 +25,10 @@ const Sidebar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map(item => document.getElementById(item.id))
-      
+
       const current = sections.find(section => {
         if (!section) return false
         const rect = section.getBoundingClientRect()
-        // Ajustamos el área de detección para que sea más precisa
         return rect.top <= window.innerHeight / 3 && rect.bottom >= window.innerHeight / 3
       })
 
@@ -29,40 +37,30 @@ const Sidebar = () => {
       }
     }
 
-    // Agregamos el evento de scroll
     window.addEventListener('scroll', handleScroll, { passive: true })
-    // Llamamos a handleScroll inmediatamente para establecer la sección inicial
     handleScroll()
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [activeSection]) // Incluimos activeSection como dependencia
+  }, [activeSection]) // ✅ ok incluirla
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
-      const headerOffset = 60; // Ajusta según el tamaño fijo del encabezado
+      const headerOffset = 60
       const elementPosition = element.getBoundingClientRect().top + window.scrollY
       const offsetPosition = elementPosition - headerOffset
-  
+
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
       })
-      
+
       setActiveSection(id)
       setIsOpen(false)
     }
   }
-
-  const navItems = [
-    { name: 'Inicio', icon: Home, id: 'home' },
-    { name: 'Sobre mí', icon: User, id: 'about' },
-    { name: 'Tecnologías', icon: Server, id: 'tech' },
-    { name: 'Proyectos', icon: FileText, id: 'projects' },
-    { name: 'Contacto', icon: Mail, id: 'contact' }
-  ]
 
   const currentTheme = theme === 'system' ? resolvedTheme : theme
   const isDark = currentTheme === 'dark'
@@ -93,7 +91,7 @@ const Sidebar = () => {
             const isActive = activeSection === item.id
             const activeColor = isDark ? 'text-blue-400' : 'text-blue-600'
             const inactiveColor = isDark ? 'text-neutral-400 hover:text-blue-400' : 'text-gray-500 hover:text-blue-600'
-            
+
             return (
               <button
                 key={item.id}
