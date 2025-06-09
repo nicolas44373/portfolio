@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { Home, User, FileText, Server, Mail, Menu, X } from 'lucide-react'
 import { useTheme } from 'next-themes'
 
-// ✅ Mover esta constante arriba
+// ✅ Declaración fija fuera del componente (no cambia nunca)
 const navItems = [
   { name: 'Inicio', icon: Home, id: 'home' },
   { name: 'Sobre mí', icon: User, id: 'about' },
@@ -22,6 +22,7 @@ const Sidebar = () => {
     setMounted(true)
   }, [])
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map(item => document.getElementById(item.id))
@@ -43,7 +44,7 @@ const Sidebar = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [activeSection]) // ✅ ok incluirla
+  }, [activeSection])
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)

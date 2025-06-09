@@ -1,11 +1,11 @@
 "use client"
-import React from 'react';
-import { User, Code, Globe, Rocket, AppWindow } from 'lucide-react';
-import { Card, CardContent } from "@/components/ui/card";
-import { useTranslation } from 'react-i18next';
+import React from 'react'
+import { User, Code, Globe, Rocket, AppWindow } from 'lucide-react'
+import { Card, CardContent } from "@/components/ui/card"
+import { useTranslation } from 'react-i18next'
 
 const About = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   const features = [
     {
@@ -24,7 +24,7 @@ const About = () => {
       icon: <AppWindow className="w-5 h-5" />,
       key: 'desktop'
     }
-  ];
+  ]
 
   return (
     <section id="about" className="min-h-screen py-20">
@@ -37,9 +37,6 @@ const About = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-start">
-          
-
-          {/* Descripción */}
           <div className="space-y-10">
             <div className="prose dark:prose-invert max-w-none space-y-6">
               <p className="text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed">
@@ -55,7 +52,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* Características */}
         <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 mt-16">
           {features.map((feature, index) => (
             <Card
@@ -80,7 +76,7 @@ const About = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default About;
+export default About
