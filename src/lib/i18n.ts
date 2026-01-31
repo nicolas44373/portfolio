@@ -10,7 +10,7 @@ const resources = {
     translation: {
       hero: {
         badge:"Open to Work",
-        text:"🎓 Técnico Programador Universitario (UTN FRT), 22 años, de Tucumán, Argentina. Apasionado por la tecnología y el desarrollo de software. Busco participar en proyectos innovadores que me desafíen y me permitan seguir creciendo mientras aporto soluciones creativas y efectivas.",
+        text:"🎓 Técnico Programador Universitario (UTN FRT), 23 años, de Tucumán, Argentina. Apasionado por la tecnología y el desarrollo de software. Busco participar en proyectos innovadores que me desafíen y me permitan seguir creciendo mientras aporto soluciones creativas y efectivas.",
         buttoncv:"Descargar CV"
       },
       about: {
