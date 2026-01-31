@@ -68,6 +68,10 @@ const resources = {
           music: {
             title: "Pagina web MusicCar",
             description: "Desarrollada para una empresa con el objectivo de impulsar ventas y profesionalismo"
+          },
+          cobranzas: {
+            title: "Sistema de cobranzas",
+            description: "Sistema desarrollado para gestionar y optimizar las cobranzas, facilitando el seguimiento de pagos y mejorando la eficiencia administrativa."
           }
         }
       },

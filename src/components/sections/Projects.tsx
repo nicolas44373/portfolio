@@ -246,6 +246,20 @@ const projects = [
     technologies: [ "Tailwind CSS", "TypeScript", "Vercel"],
     githubLink: "https://github.com/nicolas44373/asistencia",
   },
+    {
+    titleKey: "projects.projects.cobranzas.title",
+    descriptionKey: "projects.projects.cobranzas.description",
+    images: [
+      "/projects/cobranzas/cobranzas.png",
+      "/projects/cobranzas/cobranzas2.png",
+      "/projects/cobranzas/cobranzas3.png",
+      "/projects/cobranzas/cobranzas4.png",
+      "/projects/cobranzas/cobranzas5.png",
+    ],
+    technologies: [ "Tailwind CSS", "TypeScript", "Vercel"],
+    githubLink: "https://github.com/nicolas44373/cobranzas",
+    liveLink: "https://pagos-self.vercel.app/"
+  },
 ];
 
 const Projects = () => {

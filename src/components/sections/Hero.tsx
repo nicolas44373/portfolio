@@ -20,18 +20,19 @@ const Hero = () => {
   }, []);
 
   // Función para obtener la ruta del CV según el idioma
-  const getCVPath = () => {
-    return i18n.language === 'es' 
-      ? "/alurralde/Alurralde Nicolas cv - español.pdf"
-      : "/alurralde/Alurralde Nicolas cv - ingles.pdf";
-  };
+const getCVPath = () => {
+  if (!mounted) return "/alurralde/Alurralde Nicolas cv - ingles.pdf";
+  return i18n.language === 'es'
+    ? "/alurralde/Alurralde Nicolas cv - español.pdf"
+    : "/alurralde/Alurralde Nicolas cv - ingles.pdf";
+};
 
-  // Función para obtener el texto del botón según el idioma
-  const getCVButtonText = () => {
-    return i18n.language === 'es'
-      ? "Descargar CV"
-      : "Download English CV";
-  };
+const getCVButtonText = () => {
+  if (!mounted) return "Download English CV";
+  return i18n.language === 'es'
+    ? "Descargar CV"
+    : "Download English CV";
+};
 
   const socialLinks = [
     { name: 'LinkedIn', icon: '/icons/linkedin.svg', url: 'https://www.linkedin.com/in/nicolas-alurralde-366939255/' },
