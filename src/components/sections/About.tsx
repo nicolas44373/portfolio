@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { useTranslation } from 'react-i18next'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { TiltCard } from "@/components/ui/TiltCard";
 
 const About = () => {
   const { t } = useTranslation()
@@ -32,7 +33,14 @@ const About = () => {
       {/* Decorative gradient glow */}
       <div className="absolute right-0 top-[20%] w-[300px] h-[300px] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-4 relative z-10">
+      {/* Viewport scroll reveal container */}
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ type: "spring", stiffness: 60, damping: 15 }}
+        className="max-w-6xl mx-auto px-4 relative z-10"
+      >
         {/* Encabezado */}
         <div className="flex items-center gap-3 mb-16 border-b border-neutral-200/50 dark:border-neutral-800/50 pb-6">
           <div className="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200">
@@ -62,77 +70,83 @@ const About = () => {
             </div>
           </div>
 
-          {/* Columna de Imagen & Foco */}
+          {/* Columna de Imagen & Foco con Efectos 3D */}
           <div className="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col gap-8 items-center lg:items-end justify-center w-full">
-            <div className="relative w-56 h-56 md:w-64 md:h-64 rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-neutral-900 ring-8 ring-blue-500/5">
-              <Image
-                src="/nicoo.jpg"
-                alt="Nicolas Alurralde"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 224px, 256px"
-              />
-            </div>
+            <TiltCard className="rounded-3xl">
+              <div className="relative w-56 h-56 md:w-64 md:h-64 rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-neutral-900 ring-8 ring-blue-500/5">
+                <Image
+                  src="/nicoo.jpg"
+                  alt="Nicolas Alurralde"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 224px, 256px"
+                />
+              </div>
+            </TiltCard>
 
-            {/* Tarjeta de Filosofía de Trabajo */}
-            <Card className="w-full max-w-sm border border-neutral-200/50 dark:border-neutral-800/80 bg-neutral-50/50 dark:bg-neutral-900/50 backdrop-blur-sm shadow-md rounded-2xl overflow-hidden">
-              <CardContent className="p-6 space-y-4">
-                <div className="flex items-center gap-3">
-                  <ShieldCheck className="w-5 h-5 text-emerald-500" />
-                  <span className="font-bold text-sm text-neutral-800 dark:text-neutral-100 uppercase tracking-wider">
-                    Estándares del Servicio
-                  </span>
-                </div>
-                <ul className="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
-                    Arquitectura Escalable & Modular
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />
-                    Interfaces Rápidas (Zero Latency UX)
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-purple-500" />
-                    Bases de Datos Normalizadas & Seguras
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-pink-500" />
-                    Código Limpio (Clean Code & DRY)
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
+            {/* Tarjeta de Filosofía de Trabajo con Tilt */}
+            <TiltCard className="w-full max-w-sm">
+              <Card className="w-full border border-neutral-200/50 dark:border-neutral-800/80 bg-neutral-50/50 dark:bg-neutral-900/50 backdrop-blur-sm shadow-md rounded-2xl overflow-hidden">
+                <CardContent className="p-6 space-y-4">
+                  <div className="flex items-center gap-3">
+                    <ShieldCheck className="w-5 h-5 text-emerald-500" />
+                    <span className="font-bold text-sm text-neutral-800 dark:text-neutral-100 uppercase tracking-wider">
+                      Estándares del Servicio
+                    </span>
+                  </div>
+                  <ul className="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
+                    <li className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
+                      Arquitectura Escalable & Modular
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />
+                      Interfaces Rápidas (Zero Latency UX)
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-purple-500" />
+                      Bases de Datos Normalizadas & Seguras
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-pink-500" />
+                      Código Limpio (Clean Code & DRY)
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </TiltCard>
           </div>
         </div>
 
-        {/* Rejilla de Características / Pilares */}
+        {/* Rejilla de Características / Pilares con Tilt 3D y Tap Feedback */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              whileHover={{ y: -6 }}
-              transition={{ duration: 0.3 }}
+              whileTap={{ scale: 0.97 }}
+              className="h-full"
             >
-              <Card className="h-full border border-neutral-200/50 dark:border-neutral-800/60 bg-white dark:bg-neutral-900 hover:bg-neutral-50/80 dark:hover:bg-neutral-800/40 transition-colors shadow-sm rounded-2xl">
-                <CardContent className="p-6 space-y-4">
-                  <div className="p-3 w-fit rounded-xl bg-neutral-100 dark:bg-neutral-800/70">
-                    {feature.icon}
-                  </div>
-                  <div className="space-y-2">
-                    <h4 className="font-bold text-lg text-neutral-800 dark:text-neutral-100">
-                      {t(`about.features.${feature.key}.title`)}
-                    </h4>
-                    <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
-                      {t(`about.features.${feature.key}.description`)}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
+              <TiltCard className="h-full">
+                <Card className="h-full border border-neutral-200/50 dark:border-neutral-800/60 bg-white dark:bg-neutral-900 hover:bg-neutral-50/80 dark:hover:bg-neutral-800/40 transition-colors shadow-sm rounded-2xl">
+                  <CardContent className="p-6 space-y-4">
+                    <div className="p-3 w-fit rounded-xl bg-neutral-100 dark:bg-neutral-800/70">
+                      {feature.icon}
+                    </div>
+                    <div className="space-y-2">
+                      <h4 className="font-bold text-lg text-neutral-800 dark:text-neutral-100">
+                        {t(`about.features.${feature.key}.title`)}
+                      </h4>
+                      <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                        {t(`about.features.${feature.key}.description`)}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </TiltCard>
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

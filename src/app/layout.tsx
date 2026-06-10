@@ -6,6 +6,7 @@ import '@/styles/globals.css'
 import { Toaster } from "@/components/ui/toaster"
 import ScrollToTop from '@/components/ScrollToTop'
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import LayoutEffects from '@/components/Layout/LayoutEffects'
 
 // Definimos los metadatos para cada idioma
 const dictionaries = {
@@ -65,17 +66,13 @@ export async function generateMetadata(
   }
 
   return {
+    metadataBase: new URL('https://portfolio-git-main-nicolasprogram.vercel.app/'),
     title: dict.title,
     description: dict.description,
     keywords: keywords[params.lang],
     icons: {
       icon: '/code.ico',
     },
-    // Configuramos los metadatos para ambos temas (claro y oscuro)
-    themeColor: [
-      { media: '(prefers-color-scheme: light)', color: 'white' },
-      { media: '(prefers-color-scheme: dark)', color: '#030712' }, // neutral-950
-    ],
     openGraph: {
       type: 'website',
       url: 'https://portfolio-git-main-nicolasprogram.vercel.app/',
@@ -109,6 +106,13 @@ export async function generateMetadata(
   }
 }
 
+export const viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: '#030712' }, // neutral-950
+  ],
+}
+
 export default function RootLayout({
   children,
   params,
@@ -125,11 +129,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {/* Decorative gradients como en el Hero */}
-          <div className="fixed inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-blue-100/20 to-transparent dark:from-blue-500/10 dark:via-blue-800/5 dark:to-transparent rounded-full blur-3xl" />
-            <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-purple-100/20 to-transparent dark:from-purple-500/10 dark:via-purple-800/5 dark:to-transparent rounded-full blur-3xl" />
-          </div>
+          <LayoutEffects />
 
           {/* Main content */}
           <div className="relative flex min-h-screen overflow-x-hidden max-w-full">

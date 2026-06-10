@@ -24,7 +24,20 @@ const Sidebar = () => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
+    let isTeleporting = false;
+    let teleportTimeout: NodeJS.Timeout;
+
+    const handleTeleportStart = () => {
+      isTeleporting = true;
+      if (teleportTimeout) clearTimeout(teleportTimeout);
+      teleportTimeout = setTimeout(() => {
+        isTeleporting = false;
+      }, 450);
+    };
+
     const handleScroll = () => {
+      if (isTeleporting) return; // Evitar llamadas a getBoundingClientRect durante el salto de teletransporte
+      
       const sections = navItems.map(item => document.getElementById(item.id))
 
       const current = sections.find(section => {
@@ -38,28 +51,22 @@ const Sidebar = () => {
       }
     }
 
+    window.addEventListener('teleport-scroll', handleTeleportStart);
     window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
 
     return () => {
+      window.removeEventListener('teleport-scroll', handleTeleportStart);
       window.removeEventListener('scroll', handleScroll)
+      if (teleportTimeout) clearTimeout(teleportTimeout);
     }
   }, [activeSection])
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
-    if (element) {
-      const headerOffset = 60
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY
-      const offsetPosition = elementPosition - headerOffset
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      })
-
-      setActiveSection(id)
-      setIsOpen(false)
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('teleport-scroll', { detail: { id } }));
+      setActiveSection(id);
+      setIsOpen(false);
     }
   }
 
