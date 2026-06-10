@@ -488,7 +488,7 @@ const Projects = () => {
           </div>
 
           {/* Filtros de Proyectos */}
-          <div className="flex bg-neutral-100 dark:bg-neutral-800 p-1.5 rounded-2xl border border-neutral-200/50 dark:border-neutral-800/50 self-start md:self-auto">
+          <div className="flex overflow-x-auto max-w-full whitespace-nowrap bg-neutral-100 dark:bg-neutral-800 p-1.5 rounded-2xl border border-neutral-200/50 dark:border-neutral-800/50 self-start md:self-auto scrollbar-none">
             <button
               onClick={() => setFilter('all')}
               className={`px-4 py-2 text-xs font-bold rounded-xl transition-all ${

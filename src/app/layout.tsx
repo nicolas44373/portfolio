@@ -118,7 +118,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang={params.lang} suppressHydrationWarning>
-      <body className="font-sans relative bg-white dark:bg-neutral-950 transition-colors duration-300">
+      <body className="font-sans relative bg-white dark:bg-neutral-950 transition-colors duration-300 overflow-x-hidden">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -132,9 +132,9 @@ export default function RootLayout({
           </div>
 
           {/* Main content */}
-          <div className="relative flex min-h-screen">
+          <div className="relative flex min-h-screen overflow-x-hidden max-w-full">
             <Sidebar />
-            <div className="flex-1">
+            <div className="flex-1 min-w-0 overflow-x-hidden">
               <ThemeLanguageControls />
               <main className="md:ml-20 px-4 md:px-8 pt-16 md:pt-0 min-h-screen">
                 {children}
