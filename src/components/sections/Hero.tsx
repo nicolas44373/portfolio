@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Download, FileText, Send, Calendar } from 'lucide-react';
+import { Download, FileText, Send } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
@@ -212,7 +212,7 @@ const Hero = () => {
               </div>
               <div className="text-center border-y sm:border-y-0 sm:border-x border-neutral-200/60 dark:border-neutral-800/60 py-4 sm:py-0">
                 <span className="block text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400">
-                  7
+                  10+
                 </span>
                 <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mt-1 block">
                   {t('about.stats.projects')}
