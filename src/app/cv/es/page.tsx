@@ -9,10 +9,10 @@ export default function CV_ES() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-100 dark:bg-neutral-900 py-8 print:py-0 print:bg-white print:dark:bg-white text-neutral-800">
+    <div className="min-h-screen bg-neutral-100 dark:bg-neutral-900 py-6 sm:py-8 print:py-0 print:bg-white print:dark:bg-white text-neutral-800">
       
       {/* Botones de acción flotantes (ocultos al imprimir) */}
-      <div className="max-w-[21cm] mx-auto mb-6 px-4 flex justify-between items-center print:hidden">
+      <div className="max-w-[21cm] mx-auto mb-6 px-4 flex flex-col sm:flex-row gap-4 justify-between items-center print:hidden">
         <Link 
           href="/#home"
           className="flex items-center gap-2 text-sm font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors"
@@ -22,7 +22,7 @@ export default function CV_ES() {
         </Link>
         <button
           onClick={handlePrint}
-          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold py-2.5 px-5 rounded-xl shadow-lg shadow-blue-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+          className="w-full sm:w-auto flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold py-2.5 px-5 rounded-xl shadow-lg shadow-blue-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
         >
           <Printer className="w-4 h-4" />
           Imprimir / Guardar como PDF
@@ -30,14 +30,14 @@ export default function CV_ES() {
       </div>
 
       {/* Página A4 del Currículum */}
-      <div className="w-full max-w-[21cm] min-h-[29.7cm] mx-auto bg-white dark:bg-white text-neutral-900 shadow-2xl print:shadow-none p-[1.5cm] md:p-[2cm] print:p-0 flex flex-col justify-between font-sans text-[11px] leading-relaxed">
+      <div className="w-full max-w-[21cm] min-h-[29.7cm] mx-auto bg-white dark:bg-white text-neutral-900 shadow-2xl print:shadow-none p-6 sm:p-10 md:p-[2cm] print:p-0 flex flex-col justify-between font-sans text-[11px] leading-relaxed">
         
         {/* Cabecera */}
         <div className="text-center space-y-3 pb-4 border-b-2 border-neutral-800">
-          <h1 className="text-3xl font-extrabold tracking-tight text-neutral-900 uppercase">
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-900 uppercase">
             Nicolás Alurralde
           </h1>
-          <p className="text-sm font-bold text-blue-700 tracking-wider uppercase">
+          <p className="text-xs sm:text-sm font-bold text-blue-700 tracking-wider uppercase">
             Desarrollador Full-Stack & Especialista en Soluciones de Gestión
           </p>
           
@@ -86,11 +86,11 @@ export default function CV_ES() {
             </h2>
             
             <div className="space-y-1.5">
-              <div className="flex justify-between items-baseline">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1">
                 <h3 className="font-bold text-neutral-900 text-xs">
                   Desarrollador Full-Stack & Analista de Operaciones
                 </h3>
-                <span className="text-neutral-500 font-semibold text-[10px]">2024 — Actualmente</span>
+                <span className="text-neutral-500 font-semibold text-[10px] flex-shrink-0">2024 — Actualmente</span>
               </div>
               <div className="flex justify-between items-baseline text-neutral-600 font-bold text-[10px]">
                 <span>Distribuidora Alenort</span>
@@ -172,7 +172,7 @@ export default function CV_ES() {
             <h2 className="text-xs font-extrabold uppercase tracking-wider text-neutral-900 border-b border-neutral-300 pb-0.5">
               Habilidades Técnicas
             </h2>
-            <div className="grid grid-cols-2 gap-x-8 gap-y-1 text-neutral-700">
+            <div className="grid grid-cols-1 sm:grid-cols-2 print:grid-cols-2 gap-x-8 gap-y-1 text-neutral-700">
               <p><strong>Frontend:</strong> React, Next.js, TypeScript, JavaScript, Tailwind CSS, Bootstrap</p>
               <p><strong>Backend & APIs:</strong> Node.js, Express, REST APIs, C# (.NET), PHP</p>
               <p><strong>Bases de Datos:</strong> MongoDB, MySQL, Firebase, Supabase (PostgreSQL)</p>
@@ -187,14 +187,14 @@ export default function CV_ES() {
             <h2 className="text-xs font-extrabold uppercase tracking-wider text-neutral-900 border-b border-neutral-300 pb-0.5">
               Educación
             </h2>
-            <div className="flex justify-between items-baseline">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1">
               <div>
                 <h3 className="font-bold text-neutral-900 text-xs">
                   Técnico Universitario en Programación
                 </h3>
                 <p className="text-neutral-600 font-medium">Universidad Tecnológica Nacional - Facultad Regional Tucumán</p>
               </div>
-              <span className="text-neutral-500 font-semibold text-[10px]">2023 — 2024</span>
+              <span className="text-neutral-500 font-semibold text-[10px] flex-shrink-0">2023 — 2024</span>
             </div>
           </section>
         </div>
