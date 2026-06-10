@@ -1,4 +1,3 @@
-import { Inter } from 'next/font/google'
 import { Metadata } from 'next'
 import Sidebar from '@/components/Sidebar'
 import ThemeLanguageControls from '@/components/ThemeLanguageControls'
@@ -7,9 +6,6 @@ import '@/styles/globals.css'
 import { Toaster } from "@/components/ui/toaster"
 import ScrollToTop from '@/components/ScrollToTop'
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import MusicPlayer from '@/components/Layout/MusicPlayer';
-
-const inter = Inter({ subsets: ['latin'] })
 
 // Definimos los metadatos para cada idioma
 const dictionaries = {
@@ -122,7 +118,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang={params.lang} suppressHydrationWarning>
-      <body className={`${inter.className} relative bg-white dark:bg-neutral-950 transition-colors duration-300`}>
+      <body className="font-sans relative bg-white dark:bg-neutral-950 transition-colors duration-300">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -142,7 +138,6 @@ export default function RootLayout({
               <ThemeLanguageControls />
               <main className="md:ml-20 px-4 md:px-8 pt-16 md:pt-0 min-h-screen">
                 {children}
-                <MusicPlayer src="/audio/Hydrogen.mp3" />
                 <SpeedInsights />
               </main>
             </div>
