@@ -2,6 +2,23 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useScroll } from 'framer-motion';
 
+interface StaticStar {
+  x: number;
+  y: number;
+  size: number;
+  opacity: number;
+  phase: number;
+}
+
+interface SpeedStar {
+  angle: number;
+  r: number;
+  speed: number;
+  color: string;
+  width: number;
+  history: { x: number; y: number }[];
+}
+
 export default function LayoutEffects() {
   const { scrollYProgress } = useScroll();
   const [isWarping, setIsWarping] = useState(false);
@@ -9,8 +26,8 @@ export default function LayoutEffects() {
 
   // Guardamos las estrellas en Refs para cargarlas UNA sola vez al montar la web
   // Evitamos asignaciones de memoria (GC pause) en cada click.
-  const staticStarsRef = useRef<any[]>([]);
-  const starsRef = useRef<any[]>([]);
+  const staticStarsRef = useRef<StaticStar[]>([]);
+  const starsRef = useRef<SpeedStar[]>([]);
 
   // Inicializar arrays de estrellas al cargar la página
   useEffect(() => {

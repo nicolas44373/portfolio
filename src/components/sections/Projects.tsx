@@ -224,7 +224,7 @@ const ProjectRow: React.FC<ProjectRowProps> = ({ project, isEven }) => {
   return (
     <div className={`grid lg:grid-cols-12 gap-10 items-start py-16 border-b border-neutral-200/50 dark:border-neutral-800/50 last:border-0`}>
       {/* Visual Mockup - Columna Izquierda/Derecha Alternando */}
-      <div className={`lg:col-span-6 space-y-4 ${isEven ? 'lg:order-last' : ''}`}>
+      <div className={`lg:col-span-6 space-y-4 w-full min-w-0 max-w-full overflow-hidden ${isEven ? 'lg:order-last' : ''}`}>
         
         {/* Simulador de Navegador Web con efecto 3D */}
         <TiltCard className="w-full">
@@ -285,13 +285,13 @@ const ProjectRow: React.FC<ProjectRowProps> = ({ project, isEven }) => {
 
         {/* Miniaturas en carrusel horizontal */}
         {project.images.length > 1 && (
-          <div className="flex gap-2 py-2 overflow-x-auto scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800">
+          <div className="flex gap-2 py-2 overflow-x-auto w-full max-w-full scrollbar-none select-none snap-x snap-mandatory touch-pan-x">
             {project.images.map((image, idx) => (
               <motion.button
                 key={idx}
                 whileTap={{ scale: 0.93 }}
                 onClick={() => setSelectedImageIndex(idx)}
-                className={`relative w-20 aspect-[16/10] rounded-lg overflow-hidden border-2 flex-shrink-0 bg-white transition-all duration-200 ${
+                className={`relative w-20 aspect-[16/10] rounded-lg overflow-hidden border-2 flex-shrink-0 bg-white transition-all duration-200 snap-start ${
                   selectedImageIndex === idx
                     ? 'border-blue-500 dark:border-blue-400 scale-[1.05] shadow-md shadow-blue-500/10'
                     : 'border-neutral-200 dark:border-neutral-800 opacity-60 hover:opacity-100'

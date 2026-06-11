@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Download, FileText, Send } from 'lucide-react';
+import { FileText, Send } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
@@ -34,7 +34,7 @@ const Hero = () => {
     { name: 'Discord', icon: '/icons/discord.svg', url: 'https://discord.com/channels/@me/1125644563206385784' },
   ];
 
-  const getIconSrc = (link: any) => {
+  const getIconSrc = (link: { name: string; icon: string; darkIcon?: string; url: string }) => {
     if (!mounted) return link.icon;
     const currentTheme = theme === 'system' ? resolvedTheme : theme;
     return link.darkIcon && currentTheme === 'dark' ? link.darkIcon : link.icon;
